@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Choose the correct</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #fff8dc;
+      text-align: center;
+      padding-top: 30px;
+    }
+    h1 {
+      color: #ff6347;
+    }
+    .gift-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .gift {
+      width: 100px;
+      height: 100px;
+      background-color: #ff69b4;
+      border: 3px solid #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 40px;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Choose your gifts to go to the next round</h1>
+  <div class="gift-container">
+    <div class="gift" onclick="openGift(0)">🎁</div>
+    <div class="gift" onclick="openGift(1)">🎁</div>
+    <div class="gift" onclick="openGift(2)">🎁</div>
+    <div class="gift" onclick="openGift(3)">🎁</div>
+    <div class="gift" onclick="openGift(4)">🎁</div>
+  </div>
+  <script>
+    const gifts = ['🙏', '🎑', '🎑','🙏', '🎑'];
+    let openedCoins = 0;function openGift(index) {
+  const giftEl = document.getElementsByClassName('gift')[index];
+  if (giftEl.innerHTML === '🎁') {
+    giftEl.innerHTML = gifts[index];
+    if (gifts[index] === '🎑') {
+      openedCoins++;
+      if (openedCoins === 3) {
+        window.location.href = 'wish.html';
+      }
+    }
+  }
+}
+
+  </script>
+</body>
+</html>
