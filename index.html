@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tap Hearts Game to go to the next round!!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: sans-serif;
+      background: #ffe6f0;
+      text-align: center;
+    }
+    h1 {
+      background: #ff99cc;
+      margin: 0;
+      padding: 10px;
+      color: white;
+    }
+    #counter {
+      font-size: 20px;
+      margin-top: 10px;
+      color: #cc0066;
+    }
+    .heart {
+      position: absolute;
+      font-size: 30px;
+      animation: fall linear;
+      cursor: pointer;
+    }
+    @keyframes fall {
+      0% {top: -50px;}
+      100% {top: 100vh;}
+    }
+  </style>
+</head>
+<body>
+  <h1>Tap 10 hearts and go to next page</h1>
+  <div id="counter">Hearts tapped: 0/10</div>
+
+  <script>
+    let tapped = 0;
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (2 + Math.random() * 3) + 's';
+      heart.innerHTML = '❤️';
+      heart.onclick = () => {
+        heart.remove();
+        tapped++;
+        document.getElementById('counter').textContent = `Hearts tapped: ${tapped}/10`;
+        if (tapped >= 10) {
+          window.location.href = 'gifts.html';
+        }
+      };
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+    setInterval(createHeart, 300);
+  </script>
+</body>
+</html>
